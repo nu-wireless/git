@@ -289,6 +289,40 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Practical Git}
+	\vfill
+	\begin{question}[EXAMPLE: Create new repository]
+		\begin{enumerate}
+			\item Initialize \quad \texttt{git init}
+			\item Make an initial commit \quad \texttt{git commit --allow-empty}
+			\item Add a remote \quad \texttt{git remote add ...}
+		\end{enumerate}
+	\end{question}
+	\vfill
+	\begin{question}[EXAMPLE: Commit all current changes]
+		\begin{enumerate}
+			\item Prepare files for commit \quad \texttt{git add -A}
+			\item Check your changes \quad \texttt{git diff --staged}
+			\item Create a commit \quad \texttt{git commit -m "my changes"}
+			\item Push to remote \quad \texttt{git push}
+		\end{enumerate}
+	\end{question}
+	\vfill
+\end{frame}
+
+\begin{frame}
+	\frametitle{Git Tips}
+	\centering \textbf{}
+	\begin{itemize}
+		\item Make an empty initial commit
+		\item Make small, incremental commits
+		\item Use \texttt{git commit --amend}, if you messed up
+		\item You can wait to \texttt{git push}
+		\item (Software Only) Do not commit binaries, build outputs
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
 	\frametitle{See Also}
 	\centering \textbf{General}
 	\begin{itemize}
