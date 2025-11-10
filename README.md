@@ -6,7 +6,7 @@ This repository contains the slide deck and related materials used for our Intro
 
 ## Download the Workshop Files
 
-To follow along with the workshop, please download the demo `index.html` file and the precompiled slide deck `2025-fallnuwc-git.pdf` from the Releases section:
+To follow along with the workshop, please download the demo `index.html` file and the precompiled slide deck `2025-fall-nuwc-git.pdf` from the Releases section:
 
 https://github.com/nu-wireless/git/releases/tag/2025-fall
 
