@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><!-- EDIT HERE: Put your name --> Your Name — About</title>
+    <meta name="description"
+        content="<!-- EDIT HERE: One-sentence description of yourself --> Brief description here." />
+    <meta name="theme-color" content="#0e0f12" />
+
+    <!-- Social sharing metadata (optional) -->
+    <meta property="og:title" content="<!-- EDIT HERE --> Your Name — About" />
+    <meta property="og:description" content="<!-- EDIT HERE --> Brief description here." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="<!-- EDIT HERE (optional): link to an image or remove this line -->" />
+
+    <style>
+        :root {
+            --bg: #0e0f12;
+            --card: #14161b;
+            --text: #e9eef5;
+            --muted: #a8b3c5;
+            --accent: #5ee1a7;
+            --link: #8ab4ff;
+            --maxw: 920px;
+            --radius: 14px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            background: radial-gradient(1200px 600px at 80% -10%, #1e2330 0%, var(--bg) 60%);
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Cantarell, Noto Sans, Ubuntu, Arial, sans-serif;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 32px 16px 64px;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: var(--maxw)
+        }
+
+        header {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
+            border: 1px solid rgba(255, 255, 255, .08);
+            backdrop-filter: blur(6px);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+        }
+
+        .top {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        /* If students don't add an image, initials will still look good */
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: #0f1218;
+            border: 1px solid rgba(255, 255, 255, .12);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 24px;
+        }
+
+        .name {
+            font-weight: 800;
+            letter-spacing: .2px;
+            font-size: clamp(28px, 5vw, 40px);
+            margin: 0
+        }
+
+        .tag {
+            color: var(--muted);
+            margin: 6px 0 0
+        }
+
+        .links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 10px
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .pillbar {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .pill {
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #10131a;
+            border: 1px solid rgba(255, 255, 255, .08);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        main {
+            margin-top: 20px;
+            display: grid;
+            gap: 20px
+        }
+
+        section {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: var(--radius);
+            padding: 22px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, .25);
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            letter-spacing: .3px
+        }
+
+        p {
+            margin: 0 0 10px
+        }
+
+        ul {
+            margin: 8px 0 0 18px
+        }
+
+        .grid {
+            display: grid;
+            gap: 12px
+        }
+
+        @media (min-width:720px) {
+            .grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        .card {
+            background: #0f1218;
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .card h3 {
+            margin: 0 0 6px;
+            font-size: 16px
+        }
+
+        .accent {
+            color: var(--accent);
+            font-weight: 600
+        }
+
+        .mute {
+            color: var(--muted)
+        }
+
+        footer {
+            color: var(--muted);
+            text-align: center;
+            margin-top: 16px;
+            font-size: 14px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <header>
+            <div class="top">
+                <!-- EDIT HERE: Replace initials with your initials OR replace this div with <img src="photo.jpg" class="avatar"> -->
+                <div class="avatar">YN</div>
+
+                <div>
+                    <!-- EDIT HERE: Put your name -->
+                    <h1 class="name">Your Name</h1>
+
+                    <!-- EDIT HERE: One short sentence about major & interests -->
+                    <p class="tag">[Major] student @ Northeastern University · Interested in A, B, C.</p>
+                </div>
+            </div>
+
+            <div class="links">
+                <!-- EDIT HERE: Update links or remove any you don't use -->
+                <a href="mailto:you@example.com">you@example.com</a>
+                <a href="https://github.com/youruser">GitHub</a>
+                <a href="https://www.linkedin.com/in/youruser">LinkedIn</a>
+                <a href="https://yourdomain.com">Website</a>
+            </div>
+            <div class="pillbar">
+                <!-- EDIT HERE: Replace these with 3–6 short skill tags -->
+                <span class="pill">Python</span>
+                <span class="pill">C/C++</span>
+                <span class="pill">Git</span>
+                <span class="pill">LaTeX</span>
+
+                <!-- NOTE FOR STUDENTS:
+         This is only a placeholder to remind you that you can customize these.
+         Remove this pill before pushing to GitHub. -->
+                <span class="pill">MODIFY AS NEEDED</span>
+            </div>
+
+
+            <main>
+
+                <!-- ABOUT SECTION -->
+                <section>
+                    <h2>About</h2>
+                    <!-- EDIT HERE: Short intro about yourself -->
+                    <p>
+                        I’m an undergraduate student exploring <span class="accent">area 1, area 2, area 3</span>.
+                        I enjoy learning, building, and contributing to engineering communities.
+                    </p>
+
+                    <!-- EDIT HERE: Update if you're looking for roles -->
+                    <p class="mute">Currently seeking co-ops or internship opportunities.</p>
+                </section>
+
+                <!-- HIGHLIGHTS SECTION -->
+                <section>
+                    <h2>Highlights</h2>
+
+                    <!-- Students can fill these quickly with 1–2 sentences -->
+                    <div class="grid">
+                        <div class="card">
+                            <h3><!-- EDIT HERE --> A recent accomplishment</h3>
+                            <p class="mute"><!-- EDIT HERE --> Example: Finished a cool class project.</p>
+                        </div>
+                        <div class="card">
+                            <h3><!-- EDIT HERE --> Something I’m learning</h3>
+                            <p class="mute"><!-- EDIT HERE --> Example: SQL, embedded C, or machine learning basics.</p>
+                        </div>
+                        <div class="card">
+                            <h3><!-- EDIT HERE --> A tool I enjoy</h3>
+                            <p class="mute"><!-- EDIT HERE --> Example: VS Code, Git, KiCad, tmux.</p>
+                        </div>
+                        <div class="card">
+                            <h3><!-- EDIT HERE --> A hobby or interest</h3>
+                            <p class="mute"><!-- EDIT HERE --> Example: photography, robotics, reading, design.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- COURSEWORK & CLUBS SECTION -->
+                <section>
+                    <h2>Coursework & Clubs</h2>
+                    <div class="grid">
+                        <div class="card">
+                            <h3>Coursework</h3>
+                            <ul>
+                                <!-- EDIT HERE: Put 3–5 classes -->
+                                <li>Course 1</li>
+                                <li>Course 2</li>
+                                <li>Course 3</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h3>Clubs</h3>
+                            <ul>
+                                <!-- EDIT HERE -->
+                                <li>Club 1</li>
+                                <li>Club 2</li>
+                                <li>Club 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NOW SECTION -->
+                <section>
+                    <h2>Now</h2>
+                    <!-- EDIT HERE: One sentence about what you're doing this month -->
+                    <p class="mute">As of Fall 2025: [learning something new, working on classes, and exploring new
+                        tools.]
+                    </p>
+                </section>
+
+                <!-- EXPERIENCE SNAPSHOT -->
+                <section>
+                    <h2>Experience Snapshot</h2>
+                    <div class="grid">
+                        <div class="card">
+                            <h3><!-- EDIT HERE --> Role or project</h3>
+                            <p class="mute"><!-- EDIT HERE --> One sentence describing what you did.</p>
+                        </div>
+                        <div class="card">
+                            <h3><!-- EDIT HERE --> Role or project</h3>
+                            <p class="mute"><!-- EDIT HERE --> One sentence describing what you did.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CONTACT SECTION -->
+                <section>
+                    <h2>Contact</h2>
+                    <p><!-- EDIT HERE --> Email: <a href="mailto:you@example.com">you@example.com</a></p>
+                    <p class="mute"><!-- EDIT HERE --> Location: Boston, MA</p>
+                </section>
+
+            </main>
+
+            <footer>
+                <!-- EDIT HERE: Put your name -->
+                © 2025 Your Name · Hosted on GitHub Pages
+            </footer>
+
+    </div>
+</body>
+
+</html>
