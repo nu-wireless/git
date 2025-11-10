@@ -1,80 +1,87 @@
-\documentclass{beamer}
-% \documentclass{beamer} \usetheme{Madrid}
-% \usecolortheme{beaver}
+% =============================================================================
+% LaTeX Workshop Slide Deck, Northeastern University Wireless Club
+% =============================================================================
 
+% =============================================================================
+% Beamer Theme Customizations
+% =============================================================================
+\documentclass[x11names]{beamer}                            % Global option [x11names] avoids xcolor clash
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\setbeamertemplate{navigation symbols}{}                    % Hides navigation buttons at bottom-right
+\setbeamercovered{transparent}                              % Make hidden items (e.g., \onslide, \only) semi-transparent
+\setbeamercolor{section in head/foot}{bg=gray!60, fg=black} % Set a darker gray-ish color for the "section in head/foot".
+                                                            % This is the bottom-right footer column used for displaying 
+                                                            % the version (Git commit hash) and the page numbering.
 
-
-% -----------------------------------------------------------------------------
+															
+% =============================================================================
 % Packages
-% -----------------------------------------------------------------------------
-
+% =============================================================================
 \usepackage{graphicx}   % For including images (e.g., QR codes)
 \usepackage{hyperref}   % For clickable hyperlinks
-\usepackage{xcolor}     % For defining custom colors
-\usepackage{iexec}     % Run command line, use case specifically is Git commit hash for document version
-\usepackage{tcolorbox}  % For creating colored boxes for organization and emphasis
-\usepackage{qrcode}     % For generating QR codes directly in LaTeX
-\usepackage{pifont}     % For using dingbat symbols (e.g., checkmarks for compatibility)
+\usepackage{xcolor}     % For defining custom colors (e.g., the urlcolor)
+\usepackage{iexec}      % Run command line (used for Git hash in versioning)
+\usepackage{tcolorbox}  % For colored boxes
+\usepackage{qrcode}     % For generating QR codes
 \usepackage[utf8]{inputenc}
-\usepackage{mdframed}
-\usepackage{minted}
-\usepackage[x11names]{xcolor} % For custom colors (e.g., the urlcolor )
-\usepackage{tikz}
-\usetikzlibrary{automata, positioning, arrows}
+\usepackage{mdframed}   % For framed environments
+\usepackage{minted}     % For syntax-highlighted code blocks
+\usepackage{tikz}       % For drawing (used in mdframed titles)
+\usepackage{lastpage}   % For referencing the total number of pages, used in footer as \pageref{LastPage}
+                        % requires compiling the document twice to resolve the total page count correctly
 
+\usetikzlibrary{automata, positioning, arrows}
 \tikzset{
 	->,
 	node distance=3cm,
 	every state/.style={thick, fill=gray!10},
 	initial text=$ $,
 }
-\newcommand{\gitAbbrevHash}{\iexec{git rev-parse --short HEAD}} % Command to get Git commit hash for versioning (requires iexec package)
 
+% =============================================================================
+% Versioning (Git commit hash for version info in footer)
+% =============================================================================
+\newcommand{\gitAbbrevHash}{\iexec{git rev-parse --short HEAD}}
 
-% -----------------------------------------------------------------------------
-% Environment Setup
-% -----------------------------------------------------------------------------
-% \setbeamertemplate{enumerate items}[circle]
-% \setbeamercolor{item projected}{bg=red!70!black}
-
+% =============================================================================
+% Custom Environments
+% =============================================================================
 \newenvironment{question}[1][]{
-	\ifstrempty{#1}{}
-	{\mdfsetup{
-			frametitle={
-					\tikz[baseline=(current bounding box.east),outer sep=0pt]
-					\node[anchor=east,rectangle,fill=gray!30]
-					{#1};
-				}
-		}}
-	\mdfsetup{
-		innertopmargin=10pt,linecolor=gray!30,
-		linewidth=2pt,topline=true,
-		frametitleaboveskip=\dimexpr - \ht\strutbox\relax
-	}
-	\begin{mdframed}
-		}{
-	\end{mdframed}
-}
+  \ifstrempty{#1}{}{
+    \mdfsetup{
+      frametitle={
+        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+        \node[anchor=east,rectangle,fill=gray!30]{#1};
+      }}
+  }
+  \mdfsetup{
+    innertopmargin=10pt,
+    linecolor=gray!30,
+    linewidth=2pt,
+    topline=true,
+    frametitleaboveskip=\dimexpr - \ht\strutbox\relax
+  }
+  \begin{mdframed}
+}{\end{mdframed}}
 
-% -----------------------------------------------------------------------------
+% =============================================================================
 % Custom Color Definitions
-% -----------------------------------------------------------------------------
+% =============================================================================
 \definecolor{nuRed}{HTML}{C8102E}  % Northeastern University primary brand red
 
-% -----------------------------------------------------------------------------
-% Hyperlink Colors Configuration
-% -----------------------------------------------------------------------------
-% Sets colors for hyperlinks to improve readability (via hyperref) 
-
+% =============================================================================
+% Hyperlink Configuration
+% =============================================================================
 \hypersetup{
-    colorlinks=true,   % Enables colored links instead of default boxed links
-    linkcolor=blue,    % Color for internal links (e.g., Table of Contents, refs)
-    urlcolor=nuRed      % Color for external links (e.g., URLs)
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=nuRed
 }
 
-% -----------------------------------------------------------------------------
+% =============================================================================
 % Footer Configuration
-% -----------------------------------------------------------------------------
+% =============================================================================
 % Customizes the footer to display organization, workshop name, semester, version, and page number
 \setbeamertemplate{footline}{%
   \leavevmode%
@@ -84,79 +91,59 @@
       Northeastern University Wireless Club%
     \end{beamercolorbox}%
     % Center: Workshop Name
-    \begin{beamercolorbox}[wd=.20\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-      Git Workshop%
+    \begin{beamercolorbox}[wd=.20\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      Intro to Git Workshop%
     \end{beamercolorbox}%
     % Center: Semester Information
-    \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-      Spring 2025%
+    \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
+      Fall 2025%
     \end{beamercolorbox}%
     % Right: Version (Git commit hash) and Page Number
-    \begin{beamercolorbox}[wd=.30\paperwidth,ht=2.25ex,dp=1ex,rightskip=.3cm plus1fil]{author in head/foot}%
-      Version: \gitAbbrevHash{} \hspace{1em} \insertframenumber/\inserttotalframenumber%
+    \begin{beamercolorbox}[wd=.30\paperwidth,ht=2.25ex,dp=1ex,leftskip=.3cm, rightskip=.3cm plus1fil]{section in head/foot}%
+      Version: \gitAbbrevHash{} \hspace{1em} \insertpagenumber/\inserttotalframenumber%
     \end{beamercolorbox}}%
   \vskip0pt%
 }
 
-% -----------------------------------------------------------------------------
-% Slide: Title Page
-% -----------------------------------------------------------------------------
-\title{Git Workshop}
-% \subtitle{Hosted by the Northeastern University Institute of Electrical and Electronics Engineers (IEEE) Club}
-\author{Northeastern University Wireless Club - W1KBN}
-\date{March 24, 2025}
+% =============================================================================
+% Title Page Information 
+% =============================================================================
+\title{Intro to Git Workshop}
+\subtitle{Fall 2025}
+\author{
+  Northeastern University Wireless Club - W1KBN \\
+  {\small Muhammad Elarbi, Robert Halpern, Tyler Von Pervieux}
+  }
+\date{November 10, 2025}
 
 \begin{document}
 
-% -----------------------------------------------------------------------------
-% Slide: Title with QR Code for Sign-In
-% -----------------------------------------------------------------------------
+% =============================================================================
+% Slide: Title Page + Sign-In with QR Code
+% =============================================================================
 \begin{frame}
-    \titlepage % Generates the title, subtitle, author, and date
-    \vspace{-1cm} % Adjusts spacing to accommodate the QR code
-    \begin{center}
-        \textbf{Sign in Here:} \\ % Prompt for participants to sign in
-        % \includegraphics[width=0.30\textwidth]{images/nuwc-signin-qrcode.png} % Image-based QR code (if needed)
-        \qrcode{https://l.w1kbn.org/signin} % Generates QR code for sign-in URL
-        \\
-        {\small \url{https://l.w1kbn.org/signin}} % Sign-in URL for participants to manually access
-    \end{center}
+  \titlepage
+  \vspace{-1cm}
+  \begin{center}
+    \textbf{Sign in Here:} \\ 
+    \qrcode{https://forms.gle/EukxnYUPSvckBFsg7} \\
+    {\small \href{https://nuwireless.org/signin}{nuwireless.org/signin}}
+  \end{center}
 \end{frame}
 
-% -----------------------------------------------------------------------------
-% Slide: General Information and Sign-In
-% -----------------------------------------------------------------------------
+% =============================================================================
+% Slide: About Us 
+% =============================================================================
 \begin{frame}
-    \begin{tcolorbox}[colframe=blue!75!black, colback=blue!10, title=About, center title]
-        \begin{itemize}
-            \item Regular Meetings: Thursdays, 7 PM @ Hayden Hall, Room 503
-            \item Workshops: Mondays, 7 PM @ Forsyth Hall, Room 201
-        \end{itemize}        
-    \end{tcolorbox}
-    
-    \begin{tcolorbox}[colframe=blue!75!black, colback=blue!10, title=QR Codes \& Links, center title]
-        \begin{minipage}{0.32\textwidth}
-            \centering
-            \textbf{Sign in} \\
-            \qrcode{https://l.w1kbn.org/signin} \\
-            \tiny \url{https://l.w1kbn.org/signin}  % Smaller font for URL
-        \end{minipage}
-        \begin{minipage}{0.32\textwidth}
-            \centering
-            \textbf{Slack} \\
-            \qrcode{https://neuwireless.slack.com/join/signup} \\
-            \tiny \url{https://neuwireless.slack.com/join/signup}
-        \end{minipage}
-        \begin{minipage}{0.32\textwidth}
-            \centering
-            \textbf{Mailing List} \\
-            \qrcode{http://eepurl.com/gduCIr} \\
-            \tiny \url{http://eepurl.com/gduCIr}
-        \end{minipage}
-        \begin{itemize}
-            \item Website: \url{https://nuwireless.org/}
-        \end{itemize}
-    \end{tcolorbox}
+	\begin{tcolorbox}[colframe=black, colback=blue!10, title=About, center title]
+	\begin{itemize}
+		\item Regular Meetings: Thursdays, 7 PM @ Hayden Hall, Room 503
+		\item Workshops: Mondays, 7:10 PM @ Forsyth Building, Room 236
+	\end{itemize}        
+	\end{tcolorbox}
+	\begin{center}
+		\Large Thank you for a great workshop season! 
+	\end{center}
 \end{frame}
 
 
@@ -356,8 +343,8 @@
         \item Questions? Feel free to reach out!
         \item Workshop Team Emails: \\
         \{\href{mailto:elarbi.m@northeastern.edu}{elarbi.m}, 
-        \href{mailto:aviedov.v@northeastern.edu}{aviedov.v}, 
-        \href{mailto:heaney.ma@northeastern.edu}{heaney.ma}\}[at]northeastern[d0t]edu
+        \href{mailto:halpern.ro@northeastern.edu}{halpern.ro}, 
+        \href{mailto:vonpervieux.t@northeastern.edu}{vonpervieux.t}\}[at]northeastern[d0t]edu
         \item General Workshop Email: \href{mailto:workshops@nuwireless.org}{workshops}[at]nuwireless[d0t]org
         \item Website: \url{https://nuwireless.org/}
         \item Location: Hayden Hall, Room 503
