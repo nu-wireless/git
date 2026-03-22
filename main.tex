@@ -96,7 +96,7 @@
     \end{beamercolorbox}%
     % Center: Semester Information
     \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
-      Fall 2025%
+      Spring 2026%
     \end{beamercolorbox}%
     % Right: Version (Git commit hash) and Page Number
     \begin{beamercolorbox}[wd=.30\paperwidth,ht=2.25ex,dp=1ex,leftskip=.3cm, rightskip=.3cm plus1fil]{section in head/foot}%
@@ -109,12 +109,12 @@
 % Title Page Information 
 % =============================================================================
 \title{Intro to Git Workshop}
-\subtitle{Fall 2025}
+\subtitle{Spring 2026}
 \author{
   Northeastern University Wireless Club - W1KBN \\
-  {\small Muhammad Elarbi, Robert Halpern, Tyler Von Pervieux}
+  {\small Robert Halpern, Emile Sater}
   }
-\date{November 10, 2025}
+\date{March 23, 2026}
 
 \begin{document}
 
@@ -126,7 +126,7 @@
   \vspace{-1cm}
   \begin{center}
     \textbf{Sign in Here:} \\ 
-    \qrcode{https://forms.gle/EukxnYUPSvckBFsg7} \\
+    \qrcode{https://docs.google.com/forms/d/e/1FAIpQLSdBpqhB6EO9Be8mdmRfSLKSnCEQQso-FJaD6F7fUAXLPpbmgA/viewform?usp=header} \\
     {\small \href{https://nuwireless.org/signin}{nuwireless.org/signin}}
   \end{center}
 \end{frame}
@@ -138,11 +138,12 @@
 	\begin{tcolorbox}[colframe=black, colback=blue!10, title=About, center title]
 	\begin{itemize}
 		\item Regular Meetings: Thursdays, 7 PM @ Hayden Hall, Room 503
-		\item Workshops: Mondays, 7:10 PM @ Forsyth Building, Room 236
+		\item Workshops: Mondays, 7:00 PM @ Snell Library, Room 012
 	\end{itemize}        
 	\end{tcolorbox}
 	\begin{center}
-		\Large Thank you for a great workshop season! 
+		\Large Thank you for a great workshop season! \linebreak \\
+		\Large Next week (3/30) is our final workshop this semester, Embedded Design
 	\end{center}
 \end{frame}
 
@@ -152,9 +153,11 @@
 	\centering \textbf{Structure:}
 	\begin{enumerate}
 		\setlength\itemsep{1em}
-		\item Background: how does \texttt{Git} work?
-		\item Example: managing homework
-		\item Hands-on: solve \texttt{Git} `puzzles' in browser
+		\item Background: what is Git and why do we use it?
+		\item Technical: how does \texttt{Git} work?
+		\item Live Demo: one-time set up of Git on your PC
+		\item Example Workflow: your first repository.
+		% \item Hands-on: solve \texttt{Git} `puzzles' in browser
 	\end{enumerate}
 	\vfill
 	\centering \textbf{General:}
@@ -199,20 +202,21 @@
 
 \begin{frame}
 	\frametitle{Background: What is \texttt{Git} used for?}
-	\vfill
-	\centering \textbf{Group Applications (Industry, co-op)}
+	% \vfill
+	\centering \textit{Git is not just for programmers!} \linebreak
+	\\ \centering \textbf{Group Applications (Industry, co-op)}
 	\begin{itemize}
-		\item large software projects
-		\item resolve conflicts when multiple people are editing the same things
+		\item track progress on large software projects
+		\item resolve conflicts when multiple people are editing the same files
 		\item who wrote this!?
 	\end{itemize}
 	\vfill
 	\centering \textbf{Personal Applications}
 	\begin{itemize}
-		\item ``I swear this worked 10 minutes ago\ldots''
-		\item find what broke something and when
-		\item separate tasks; work on bug fixing is isolated from work on new feature
-		\item can use for class work!
+		\item ``I swear this worked 10 minutes ago\ldots'' (rollback)
+		\item find what change broke something, and when
+		\item bug fixing can be isolated from work on new features
+		\item sharable storage space for classwork or notes
 	\end{itemize}
 	\vfill
 \end{frame}
@@ -240,9 +244,10 @@
 	\vfill
 	\begin{question}[EXAMPLE: Homework Files]
 		\begin{enumerate}
-			\item \emph{Init}: make a file
-			\item \emph{Add/Commit}: save file
-			\item \emph{Branch/Checkout}: two new features
+			\item \emph{Init}: make a repo (one time)
+			\item \emph{Add}: track changes from a file
+			\item \emph{Commit}: save file
+			\item \emph{Branch/Checkout}: add separate new features
 			\item \emph{Merge}: combine those new features
 			\item \emph{Restore/Checkout}: restore save
 		\end{enumerate}
@@ -251,7 +256,8 @@
 \end{frame}
 
 \begin{frame} \frametitle{Background: \texttt{Git} vs. \texttt{GitHub}?}
-	\centering \textbf{What's the difference between \texttt{Git} and \texttt{GitHub}?}
+	\centering \textbf{What's the difference between \texttt{Git} and \texttt{GitHub}?} \\
+	\centering \textit{What's the difference between an engine and a car}
 	\vfill
 	\begin{columns}[t]
 		\begin{column}{0.33\textwidth}
@@ -265,7 +271,7 @@
 		\begin{column}{0.67\textwidth}
 			\centering \textbf{GitHub}
 			\begin{itemize}
-				\item a company
+				\item a company, with servers
 				\item centralized location to store git repositories (git server)
 				\item alternatives: GitLab, SourceHut, BitBucket, Gitea, self hosting, \ldots
 				\item additional project management utilities
@@ -301,11 +307,13 @@
 	\frametitle{Git Tips}
 	\centering \textbf{}
 	\begin{itemize}
-		\item Make an empty initial commit
-		\item Make small, incremental commits
-		\item Use \texttt{git commit --amend}, if you messed up
-		\item You can wait to \texttt{git push}
-		\item (Software Only) Do not commit binaries, build outputs
+		\item Clone your repository from GitHub to skip initializing the directory.
+		\item Regularly \texttt{git pull} if working on a shared repository
+		\item Make an empty initial commit to verify connection
+		\item Make \textit{small, incremental} commits
+		\item Use \texttt{git commit --amend} to modify a messed-up commit
+		\item You can wait multiple commits to \texttt{git push}
+		\item (Software Only) \textbf{Do not commit binaries} (i.e. PDFs), build outputs
 	\end{itemize}
 \end{frame}
 
@@ -340,18 +348,17 @@
 \begin{frame}
     \frametitle{Contact Us}
     \begin{itemize}
-        \item Questions? Feel free to reach out!
+        \item Questions? Feel free to reach out! \linebreak \\
         \item Workshop Team Emails: \\
-        \{\href{mailto:elarbi.m@northeastern.edu}{elarbi.m}, 
-        \href{mailto:halpern.ro@northeastern.edu}{halpern.ro}, 
-        \href{mailto:vonpervieux.t@northeastern.edu}{vonpervieux.t}\}[at]northeastern[d0t]edu
-        \item General Workshop Email: \href{mailto:workshops@nuwireless.org}{workshops}[at]nuwireless[d0t]org
+        \href{mailto:halpern.ro@northeastern.edu}{halpern.ro}$@$northeastern.edu \\
+		\href{mailto:sater.e@northeastern.edu}{sater.e}$@$northeastern.edu
+        \item General Workshop Email: \href{mailto:workshops@nuwireless.org}{workshops}$@$nuwireless.org
         \item Website: \url{https://nuwireless.org/}
         \item Location: Hayden Hall, Room 503
     \end{itemize}
     \vspace{1cm}
     \begin{flushright}
-        \footnotesize{© 2025 Northeastern Wireless Club} \\
+        \footnotesize{© 2026 Northeastern Wireless Club} \\
         \footnotesize{Design: \href{https://melarbi.com}{Muhammad Elarbi}, based on \LaTeX\ Beamer}\\
     \end{flushright}
 \end{frame}
